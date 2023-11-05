@@ -6,7 +6,7 @@ Hakkımda
 .. image:: /_static/images/about.svg
 	:width: 200
   		
-Açık kaynaklı sistemleri tanıma ve geliştirmeye  gönün vermiş bilişimciyim.
+Açık kaynaklı sistemleri tanıma ve geliştirme yapan yazılımcıyım.
 
 
 .. raw:: pdf
