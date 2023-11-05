@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="tr" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>usbkeycreaterusers &#8212; Blog Sayfam  belgelendirmesi</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=c2caf74b" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=59aab725" />
+    <script src="../_static/documentation_options.js?v=622dbbea"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=34f4c3a9"></script>
+    <link rel="canonical" href="https://bayramkarahan.github.io/5-uygulama/9-usbanahtar.html" />
+    <link rel="index" title="Dizin" href="../genindex.html" />
+    <link rel="search" title="Ara" href="../search.html" />
+    <link rel="next" title="Linux Konuları" href="../7-dokuman/index.html" />
+    <link rel="prev" title="zamanligorev" href="8-zamanligorev.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="usbkeycreaterusers">
+<h1>usbkeycreaterusers<a class="headerlink" href="#usbkeycreaterusers" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/0-usbkeycreater.svg"><img alt="../_images/0-usbkeycreater.svg" src="../_images/0-usbkeycreater.svg" width="100" /></a>
+</div></blockquote>
+<p>Bu proje usb anahtar hazırlama ve açılmasını içeren bir projedir.</p>
+<p><strong>Kurulum:</strong></p>
+<p>Kurulum için deb paketini indirip kurununuz.</p>
+<p><strong>Usb Hazırlamak:</strong></p>
+<p>Aşağıdaki aşamaları sırasıyla uygulayarak usb disk hazırlanabilir.</p>
+<div class="line-block">
+<div class="line">Yönetici şifresini girerek uygulama açılır.</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/2-usbkey.png"><img alt="../_images/2-usbkey.png" src="../_images/2-usbkey.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Usb anahtarın kullanacağı kullanıcı adını yazınız.</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/3-usbkey.png"><img alt="../_images/3-usbkey.png" src="../_images/3-usbkey.png" style="width: 600px;" /></a>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Anahtar oluştur seçildiğinde alt köşede disk hazırlandı mesajı verir ve usb olmadığı zaman kullanmak için parola verir. Disk hazırlandı mesajını aldığınızda usb diskiniz hazırlanmıştır.</div>
+</div>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/4-usbkey.png"><img alt="../_images/4-usbkey.png" src="../_images/4-usbkey.png" style="width: 600px;" /></a>
+</div></blockquote>
+<p><strong>Usb Anahtar Olarak Kullanma:</strong></p>
+<p>1- Sistemi yeniden başlatın</p>
+<p>2- Oturum açma giriş ekranına geldiğinde usb diskiniz takınız.</p>
+<p>3- Usb disk takılınca sistem ebaqr kullanıcısıyla açılacaktır.</p>
+<p>4- Oturum açıkken usb diski çıkartığınız  oturumu kapatacaktır.</p>
+<p>5- Eğer disk çıkartıldığında başka bir farklı bir komut çalıştırmak isterseniz;</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/usr/share/usbkeycreater/command.conf<span class="w"> </span>dosya<span class="w"> </span>içeriğini<span class="w"> </span>değiştirin.
+</pre></div>
+</div>
+<p><strong>Örnek 1(Oturum Kapatma varsayılan bu var):</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;loginctl terminate-seat seat0&quot;</span>&gt;/usr/share/usbkeycreater/command.conf
+</pre></div>
+</div>
+<p><strong>Örnek 2(Sistemi Kapatma):</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;poweroff&quot;</span>&gt;/usr/share/usbkeycreater/command.conf
+</pre></div>
+</div>
+<p><strong>Örnek 3(Sistemi Yeniden Başlatma):</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;reboot&quot;</span>&gt;/usr/share/usbkeycreater/command.conf
+</pre></div>
+</div>
+<p>Yukarıdaki örnekleri veya başka bir işi yapacak komutları çalıştırabilirsiniz. Kurulduğunda varsayılan olarak ilk örnek çalışacak şekilde ayarlanmıştır.
+Terminalde örneklerde gösterilen komut çalıştırılarak görev tanımlaması yapabilirsiniz.</p>
+<p>Paket Ve Kod
+| usbkeycreaterusers paket ve kaynak kodları için <a class="reference external" href="https://github.com/bayramkarahan/usbkeycreaterusers">tıklayınız.</a>
+| usbkeycreaterusers imajı için usbkeycreaterusers <a class="reference external" href="https://github.com/bayramkarahan/usbkeycreaterusers/raw/master/usbkeycreaterusers_1.5.0_amd64.deb">indir.</a></p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/logo.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+<h3>Gezinti</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Uygulamalarım</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-betikyukleyici.html">Betikyukleyici</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10-e-uctas.html">e-uctas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-e-carp.html">e-carp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-e-tahta.html">e-tahta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-e-kilit.html">e-kilit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-e-ag.html">e-ag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5-e-sabit.html">e-sabit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-e-zil.html">e-zil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-akisdiyagrami.html">akisdiyagrami</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-zamanligorev.html">zamanligorev</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">usbkeycreaterusers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../7-dokuman/index.html">Linux Konuları</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-about.html">Hakkımda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-contact.html">İletişim</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Blog 2023.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/5-uygulama/9-usbanahtar.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
