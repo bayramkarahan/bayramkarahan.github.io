@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bayramkarahan.gitlab.io/sayfa/sitemap.xml
+Sitemap: https://bayramkarahan.github.io/sitemap.xml
