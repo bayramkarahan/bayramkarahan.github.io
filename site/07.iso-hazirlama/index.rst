@@ -1,5 +1,5 @@
-Uygulamalar
-===========
+iso Hazırlama
+=============
 .. toctree::
 	:glob:
 

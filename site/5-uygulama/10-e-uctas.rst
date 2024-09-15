@@ -8,12 +8,15 @@ e-uctas mantık oyunu.
 
 | Uygulama Görüntüleri;
 
-.. image:: /_static/images/1-uygulama-uctas.png
-  	:width: 300
+.. table::
+   :align: center
+   :widths: auto
 
-.. image:: /_static/images/2-uygulama-uctas.png
-  	:width: 300
-  		
+   +----------------------------------------------------+-------------------------------------------------------+
+   | .. image:: /_static/images/1-uygulama-uctas.png    | .. image:: /_static/images/1-uygulama-uctas.png   	|   
+   |	:width: 500					|	:width: 500					|
+   +----------------------------------------------------+-------------------------------------------------------+
+
 Paket Ve Kod
 
 | * e-uctas paket ve kaynak kodları için `tıklayınız. <https://github.com/bayramkarahan/e-uctas>`_

@@ -1,5 +1,5 @@
-Uygulamalar
-===========
+Paket Sistemi
+=============
 .. toctree::
 	:glob:
 
