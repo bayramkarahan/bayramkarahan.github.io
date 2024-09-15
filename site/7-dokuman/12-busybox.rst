@@ -1,29 +1,18 @@
 busybox Nedir?
 ++++++++++++++
-
-Busybox tek bir dosya halinde bulunan birçok araç seçine sahip olan bir programdır. Bu araçlar initramfs sisteminde ve sistem genelinde sıkça kullanılabilir. Busybox aşağıdaki gibi kullanılır.
-
-.. code-block:: shell
-
-	$ busybox [komut] (seçenekler)
-
-Eğer busyboxu komut adı ile linklersek o komutu doğrudan çalıştırabiliriz. Aşağıda tar uygulamasını busybox dan türettik.
+Busybox tek bir dosya halinde bulunan birçok araç seçine sahip olan bir programdır. Bu araçlar initramfs sisteminde ve sistem genelinde sıkça kullanılabilir. Busybox aşağıdaki gibi kullanılır. Örneğin, dosya listelemek için ls komutunu kullanmak isterseniz:
 
 .. code-block:: shell
 
-	$ ln -s /bin/busybox ./tar
-	$ ./tar
+	$ busybox ls
 
 Busyboxtaki tüm araçları sisteme sembolik bağ atmak için aşağıdaki gibi bir yol izlenebilir. Bu işlem var olan dosyaları sildiği için tehlikeli olabilir. Sistemin tasarımına uygun olarak yapılmalıdır.
 
 .. code-block:: shell
 
 	$ busybox --install -s /bin # -s parametresi sembolik bağ olarak kurmaya yarar.
-	
-Busybox Derleme
----------------
 
-Busybox **static** olarak derlenmediği sürece bir libc kütüphanesine ihtiyaç duyar. initramfs içerisinde kullanılacaksa içerisine libc dahil edilmelidir. Bir dosyanın static olarak derlenip derlenmediğini öğrenmek için aşağıdaki komut kullanılır. Derleme türleri ve detayları için bu dokümandaki derleme konusuna bakınız.
+Busybox **static** olarak derlenmediği sürece bir libc kütüphanesine ihtiyaç duyar. initramfs içerisinde kullanılacaksa içerisine libc dahil edilmelidir. Bir dosyanın static olarak derlenip derlenmediğini öğrenmek için aşağıdaki komut kullanılır.
 
 .. code-block:: shell
 
@@ -40,7 +29,8 @@ Busybox derlemek için öncelikle **make defconfig** kullanılarak veya önceden
 
 Derleme bittiğinde kaynak kodun bulunduğu dizinde busybox dosyamız oluşmuş olur.
 
-Static olarak derlemiş olduğumuz busyboxu kullanarak minimal bir dağıtım hazırlayabiliriz.
+Static olarak derlemiş olduğumuz busyboxu kullanarak minimal kök dizin oluşturabiliriz. Burada static yapı kallanılmayacaktır. 
+Sistemdeki /bin/busybox kullanılacaktır. Eğer yoksa busybox sisteme yüklenmelidir.
 
 .. raw:: pdf
 

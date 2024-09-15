@@ -1,0 +1,49 @@
+ld(linker)
+++++++++++
+
+ld (linker) komutu, Linux sistemlerinde derlenmiş nesne dosyalarını birleştirmek ve yürütülebilir dosyalar veya paylaşılan kütüphaneler oluşturmak için kullanılan bir araçtır. Bu komut, derleyicinin çıktısı olan nesne dosyalarını alır ve bunları birleştirerek çalıştırılabilir bir dosya oluşturur.
+
+ld komutu, bir programın bağımlılıklarını çözmek ve gerekli kütüphaneleri eklemek için kullanılır. Bu sayede program, çalıştırıldığında gereken tüm kütüphanelere erişebilir ve doğru şekilde çalışabilir.
+
+Aşağıda basit bir örnek verilmiştir:
+
+.. code-block:: shell
+
+	gcc -c main.c -o main.o
+	gcc -c helper.c -o helper.o
+	ld main.o helper.o -o program
+
+Bu örnekte, gcc komutuyla main.c ve helper.c dosyaları derlenir ve nesne dosyaları (main.o ve helper.o) oluşturulur. Ardından, ld komutuyla bu nesne dosyaları birleştirilerek program adında bir çalıştırılabilir dosya oluşturulur.
+
+ld komutu, Linux sistemlerinde programların derlenmesi ve çalıştırılması sürecinde önemli bir rol oynar ve programların doğru şekilde çalışmasını sağlar.
+
+Linker Türleri
+--------------
+
+Linker, bir programın derlenmiş obje dosyalarını birleştirerek çalıştırılabilir bir dosya oluşturan bir yazılımdır. Linker, programın farklı bölümlerini bir araya getirir, sembol tablolarını oluşturur ve bağımlılıkları çözer.
+
+Linux'ta kullanılan yaygın linker çeşitleri şunlardır:
+
+    GNU Linker (ld): GNU Projesi'nin bir parçası olan GNU Linker, Linux sistemlerinde en yaygın olarak kullanılan linker'dır. ld, derlenmiş obje dosyalarını birleştirir ve çalıştırılabilir bir dosya oluşturur. Ayrıca, dinamik bağlantı için gerekli olan dinamik kütüphaneleri de yönetir.
+
+    Gold Linker: Gold Linker, GNU Linker'a alternatif olarak geliştirilmiş bir linker'dır. Gold Linker, daha hızlı bağlama süreleri sunar ve büyük projelerde performans avantajı sağlar.
+
+    LLD (LLVM Linker): LLD, LLVM projesinin bir parçası olan modern bir linker'dır. LLD, hızlı bağlama süreleri ve düşük bellek tüketimi ile bilinir. Ayrıca, birden fazla platformda çalışabilme özelliğine sahiptir.
+
+Bu linker çeşitleri, Linux sistemlerinde programların birleştirilmesi ve çalıştırılabilir dosyaların oluşturulması için kullanılır. Her bir linker'ın kendine özgü avantajları ve kullanım senaryoları vardır. Projenizin gereksinimlerine ve tercihlerinize bağlı olarak uygun olanı seçebilirsiniz.
+
+
+.. code-block:: shell
+
+	# GNU Linker (ld) kullanım örneği
+	ld -o program program.o
+
+	# Gold Linker kullanım örneği
+	gold -o program program.o
+
+	# LLD (LLVM Linker) kullanım örneği
+	lld -o program program.o
+
+.. raw:: pdf
+
+   PageBreak
