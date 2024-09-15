@@ -1,5 +1,5 @@
-Linux Konuları
-==============
+Yardımcı Konular
+================
 .. toctree::
 	:glob:
 
