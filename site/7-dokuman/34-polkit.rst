@@ -68,10 +68,10 @@ Bir Grub-User-Uygulamaya İzin Verme
 	);
 
 
-Örnek Uygulama
---------------
+Örnek Uygulama1
+---------------
 
-Bu örnekte /usr/bin/betikyukleyici uygulamasını root yetkisisyle çalıştımak için aşağıdaki işlem adımları yapılır.
+Bu örnekte /usr/bin/betikyukleyici ikili uygulamasını root yetkisisyle çalıştımak için aşağıdaki işlem adımları yapılır.
 
 Policy Oluşturma
 ^^^^^^^^^^^^^^^^
@@ -101,7 +101,7 @@ allow_any ayarları:
 Bu ayarların her biri için aşağıdaki seçenekler mevcuttur:
 
     no : Kullanıcının işlemi gerçekleştirme yetkisi yoktur. Bu nedenle kimlik doğrulamaya gerek yoktur.
-    evet : Kullanıcı herhangi bir kimlik doğrulaması olmadan işlemi gerçekleştirme yetkisine sahiptir.
+    yes : Kullanıcı herhangi bir kimlik doğrulaması olmadan işlemi gerçekleştirme yetkisine sahiptir.
     auth_self : Kimlik doğrulama gereklidir ancak kullanıcının yönetici kullanıcı olması gerekmez.
     auth_admin : Yönetici kullanıcı olarak kimlik doğrulaması gerekiyor.
     auth_self_keep : auth_self ile aynıdır ancak sudo gibi yetkilendirme birkaç dakika sürer.
@@ -127,6 +127,83 @@ rules Oluşturma
 
 	sudo systemctl restart polkit
 	pkexec /usr/bin/betikyukleyici
+
+
+Örnek Uygulama2
+---------------
+
+Bu örnekte /usr/bin/test.py python scriptinin root yetkisisyle çalıştımak için aşağıdaki işlem adımları yapılır.
+
+.. code-block:: shell
+
+	#!/usr/bin/pkexec /usr/bin/python3
+	# test.py
+	import os
+
+	def main():
+		print("Bu bir Polkit ile çalıştırılan Python dosyasıdır.")
+		os.system("mkdir /test")  # Kökte test adında dizin oluşturur
+
+	if __name__ == "__main__":
+		main()
+
+
+Policy Oluşturma
+^^^^^^^^^^^^^^^^
+/usr/share/polkit-1/action dizinine test.policy dosyası oluşturulur ve aşağıdaki kodlar içerisi eklenir ve kaydedilir.
+
+.. code-block:: shell
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy 1.0//EN"
+	"http://www.freedesktop.org/standards/PolicyKit/1.0/policykit-policy.dtd">
+	<policyconfig>
+	  <action id="org.example.test">
+		<message>Bu scripti çalıştırmak için yetki gereklidir.</message>
+		<defaults>
+			  <allow_any>auth_admin</allow_any>
+			  <allow_inactive>auth_admin</allow_inactive>
+			 < allow_active>auth_admin</allow_active>
+		</defaults>
+		 <annotate key="org.freedesktop.policykit.exec.path">/test.py</annotate>
+		<annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+	  </action>
+	</policyconfig>
+
+
+allow_any ayarları:
+...................
+
+Bu ayarların her biri için aşağıdaki seçenekler mevcuttur:
+
+    no : Kullanıcının işlemi gerçekleştirme yetkisi yoktur. Bu nedenle kimlik doğrulamaya gerek yoktur.
+    yes : Kullanıcı herhangi bir kimlik doğrulaması olmadan işlemi gerçekleştirme yetkisine sahiptir.
+    auth_self : Kimlik doğrulama gereklidir ancak kullanıcının yönetici kullanıcı olması gerekmez.
+    auth_admin : Yönetici kullanıcı olarak kimlik doğrulaması gerekiyor.
+    auth_self_keep : auth_self ile aynıdır ancak sudo gibi yetkilendirme birkaç dakika sürer.
+    auth_admin_keep : auth_admin ile aynıdır ancak sudo gibi yetkilendirme birkaç dakika sürer.
+    
+rules Oluşturma
+^^^^^^^^^^^^^^^
+
+/usr/share/polkit-1/rules.d dizinine test.rules dosyası oluşturulur ve aşağıdaki kodlar içerisi eklenir ve kaydedilir.
+
+.. code-block:: shell
+
+	polkit.addRule(function(action, subject) {
+		if (action.id == "org.example.test") {
+		   return polkit.Result.YES;
+		}
+	});
+	
+Çalıştırılması
+^^^^^^^^^^^^^^
+
+.. code-block:: shell
+
+	sudo systemctl restart polkit
+	pkexec /usr/bin/test.py
+
 
 .. raw:: pdf
 
