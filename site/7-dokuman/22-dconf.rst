@@ -106,6 +106,8 @@ Bu dosyalarda bir değişiklik yapmadan sadece istediğimiz değerleri değişti
 	[org.gnome.desktop.interface]
 	font-name='Sans 12'
 
+override dosyalarında yapılan ayarların geçerli olması için sistemin yeniden başlatılması gerekmektedir.
+
 .. raw:: pdf
 
    PageBreak
