@@ -107,6 +107,14 @@ Bu dosyalarda bir değişiklik yapmadan sadece istediğimiz değerleri değişti
 	font-name='Sans 12'
 
 override dosyalarında yapılan ayarların geçerli olması için sistemin yeniden başlatılması gerekmektedir.
+override dosyasının geçerli olması için dosya içerisinde değiştirilen değerlerin resetlenmesi(ayarlanmamış)  gerekmektedir.
+
+Aşağıda font ismi resetleniyor. Eğer resetlenmezse override dosyasındaki ayarlar geçerli olmaz.
+
+.. code-block:: shell
+	
+	gsettings reset org.gnome.desktop.interface font-name
+	
 
 .. raw:: pdf
 
