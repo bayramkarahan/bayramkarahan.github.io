@@ -1,6 +1,6 @@
 
-Sistem Ayarlarını Değiştirme
-++++++++++++++++++++++++++++
+dconf ve Sistem Ayarları
+++++++++++++++++++++++++
 
 dconf
 -----
@@ -91,11 +91,11 @@ schemas Override
 
 Sistem için schemas dosyaları **/usr/share/glib-2.0/schemas** konumunda bulunur.
 Bu dosyalarda bir değişiklik yapmadan sadece istediğimiz değerleri değiştirmek istiyorsak
-**/usr/share/glib-2.0/schemas/ozelayarlar.override** adlı bir dosya oluşturup **xml** uzantılı dosyalardaki ayarları geçersiz kılabiliriz.
+**/usr/share/glib-2.0/schemas/ozelayarlar.gschema.override** adlı bir dosya oluşturup **xml** uzantılı dosyalardaki ayarları geçersiz kılabiliriz.
 
 .. code-block:: shell
 	
-	#ozelayarlar.override doaya içeriği
+	#ozelayarlar.gschema.override doaya içeriği
 	
 	#monitör ölçeklendirme
 	[org.gnome.desktop.interface]
