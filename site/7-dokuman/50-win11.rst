@@ -1,0 +1,60 @@
+OOBE\BYPASSNRO ile Windows 11 Kurulumunda İnternet Zorunluluğunu Atlamak
+=========================================================================
+
+Bu belge, Windows 11 kurulum sürecinde internet bağlantısı ve Microsoft hesabı zorunluluğunu atlamak için kullanılan ``OOBE\BYPASSNRO`` komutunun nasıl kullanılacağını adım adım açıklar.
+
+📌 Amaç
+--------
+
+Windows 11 Home ve bazı Pro sürümleri, kurulum sırasında internet bağlantısı ve Microsoft hesabı kullanımını zorunlu kılar. Ancak ``OOBE\BYPASSNRO`` komutu ile bu zorunluluklar bypass edilerek **çevrimdışı** (offline) kurulum yapılabilir.
+
+🔧 Gereksinimler
+-----------------
+
+- Windows 11 kurulum USB'si (ISO'dan hazırlanmış)
+- Klavye erişimi (Shift + F10 kombinasyonu için)
+- Kurulum sırasında internet bağlantısı gerektirmeyen sistem
+
+🧭 Adım Adım Kurulum
+----------------------
+
+1. Bilgisayarı USB üzerinden başlatın ve Windows 11 kurulum ekranına ulaşın.
+
+2. Dil ve klavye seçeneklerini belirleyin, kuruluma devam edin.
+
+3. Kurulum ekranı sizi şu sayfaya getirecektir::
+
+    Hadi seni bir ağa bağlayalım  
+    (Let's connect you to a network)
+
+4. Bu ekrandayken ``Shift + F10`` tuş kombinasyonunu kullanarak **Komut İstemi**'ni açın.
+
+5. Aşağıdaki komutu yazın ve Enter'a basın::
+
+    oobe\bypassnro
+
+6. Bilgisayar otomatik olarak yeniden başlayacaktır.
+
+7. Yeniden başlatıldıktan sonra artık internet bağlantısı istemeyen ekranla karşılaşacaksınız. Burada şu seçenek görünecektir::
+
+    Sınırlı kurulum (Limited Setup)
+
+8. Bu seçeneği seçerek bir **yerel kullanıcı hesabı** ile kuruluma devam edebilirsiniz.
+
+📎 Açıklama
+-----------
+
+- ``oobe\bypassnro`` komutu, "Out-of-box Experience (OOBE)" aşamasında *Network Requirement Override* anlamına gelir.
+- Microsoft tarafından belgelenmemiş bir komut olup, özellikle Home sürümlerinde zorunlu hale gelen Microsoft hesabı bağlantısını devre dışı bırakır.
+
+⚠️ Uyarılar
+------------
+
+- Bu işlem kurulumun desteklenmeyen yollarla yapılmasını sağlar; bazı özelliklerde kısıtlamalar olabilir.
+- Microsoft, bu kurulum şeklinde destek garantisi vermez.
+- Güncellemelerde veya etkinleştirme işlemlerinde sorun yaşanabilir.
+
+✅ Sonuç
+--------
+
+Bu adımları takip ederek, Windows 11’i çevrimdışı modda ve yerel hesap ile kurabilir, Microsoft hesabı ve internet bağlantısı zorunluluğunu atlayabilirsiniz.
